@@ -7,11 +7,12 @@ import com.conversorMonedas.modelos.Menu;
 
 import java.util.Scanner;
 
-public class Principal {
+public class Principal2 {
     public static void main(String[] args) {
+
         Scanner teclado = new Scanner(System.in);
         ConvertidorApi convertidorApi = new ConvertidorApi();
-        ConversionRecord c = null;
+        ConversionRecord conversionRecord = null;
         Conversion conversion = null;
 
         System.out.println("Ingrese el valor que desea convertir");
@@ -24,38 +25,40 @@ public class Principal {
             float cantidad = teclado.nextFloat();
             switch (opcion) {
                 case 1 -> {
-                    c = convertidorApi.convertir("USD", "ARS", cantidad);
-                    conversion = new Conversion(c, cantidad);
-                    System.out.println(conversion);
+                    conversionRecord = ConvertidorApi.tasaConversion("USD", "COP");
+                    conversion = new Conversion(conversionRecord, 1);
+                    System.out.println(conversion.toString());
                 }
                 case 2 -> {
-                    c = convertidorApi.convertir("ARS", "USD", cantidad);
-                    conversion = new Conversion(c, cantidad);
+                    conversionRecord = ConvertidorApi.tasaConversion("ARS", "USD");
+                    conversion = new Conversion(conversionRecord, cantidad);
                     System.out.println(conversion);
                 }
                 case 3 -> {
-                    c = convertidorApi.convertir("USD", "BRL", cantidad);
-                    conversion = new Conversion(c, cantidad);
+                    conversionRecord = ConvertidorApi.tasaConversion("USD", "BRL");
+                    conversion = new Conversion(conversionRecord, cantidad);
                     System.out.println(conversion);
                 }
                 case 4 -> {
-                    c = convertidorApi.convertir("BRL", "USD", cantidad);
-                    conversion = new Conversion(c, cantidad);
+                    conversionRecord = ConvertidorApi.tasaConversion("BRL", "USD");
+                    conversion = new Conversion(conversionRecord, cantidad);
                     System.out.println(conversion);
                 }
                 case 5 -> {
-                    c = convertidorApi.convertir("USD", "COP", cantidad);
-                    conversion = new Conversion(c, cantidad);
+                    conversionRecord = ConvertidorApi.tasaConversion("USD", "COP");
+                    conversion = new Conversion(conversionRecord, cantidad);
                     System.out.println(conversion);
                 }
                 case 6 -> {
-                    c = convertidorApi.convertir("COP", "USD", cantidad);
-                    conversion = new Conversion(c, cantidad);
+                    conversionRecord = ConvertidorApi.tasaConversion("COP", "USD");
+                    conversion = new Conversion(conversionRecord, cantidad);
                     System.out.println(conversion);
                 }
                 case 7 -> System.out.println("Hasta Luego");
                 default -> System.out.println("Opcion no valida");
             }
         }
+
+
     }
 }
